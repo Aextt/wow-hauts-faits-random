@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Haut fait random WoW</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #111;
+      color: #eee;
+      padding: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .result {
+      margin-top: 20px;
+      font-size: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<h1>🎲 Haut fait random WoW</h1>
+
+<button onclick="randomAchievement()">
+  Donne-moi un haut fait
+</button>
+
+<div class="result" id="result"></div>
+
+<script>
+  const achievements = [
+    { name: "Exploration de Kalimdor", done: false },
+    { name: "Maître des donjons classiques", done: true },
+    { name: "100 montures", done: false },
+    { name: "Vaincre Onyxia", done: true }
+  ];
+
+  function randomAchievement() {
+    const notDone = achievements.filter(a => !a.done);
+
+    if (notDone.length === 0) {
+      document.getElementById("result").innerText = "🎉 Tout est fait !";
+      return;
+    }
+
+    const random =
+      notDone[Math.floor(Math.random() * notDone.length)];
+
+    document.getElementById("result").innerText =
+      "👉 " + random.name;
+  }
+</script>
+
+</body>
+</html>
